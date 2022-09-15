@@ -10,6 +10,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            MigrationsDirectory = @"Persistence\Migrations";
         }
 
         protected override void Seed(CleanArchitecture.DataAccess.Persistence.ApplicationDbContext context)
