@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.DataAccess.Entities;
+using CleanArchitecture.DataAccess.Persistence.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,5 +18,12 @@ namespace CleanArchitecture.DataAccess.Persistence
         public DbSet<Employee> Employees { get; set; }
 
         public DbSet<Department> Departments { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new DepartmentConfiguration());
+            modelBuilder.Configurations.Add(new EmployeeConfiguration());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
